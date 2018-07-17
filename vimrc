@@ -18,13 +18,12 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if (has("termguicolors"))
+  set termguicolors
 endif
 
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
 endif
 
 filetype plugin indent on
@@ -45,21 +44,39 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 
   " ALE linting events
-  if g:has_async
-    set updatetime=1000
-    let g:ale_lint_on_text_changed = 0
-    autocmd CursorHold * call ale#Lint()
-    autocmd CursorHoldI * call ale#Lint()
-    autocmd InsertEnter * call ale#Lint()
-    autocmd InsertLeave * call ale#Lint()
-  else
-    echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
-  endif
+  " if g:has_async
+  "   set updatetime=1000
+  "   let g:ale_lint_on_text_changed = 0
+  "   autocmd CursorHold * call ale#Lint()
+  "   autocmd CursorHoldI * call ale#Lint()
+  "   autocmd InsertEnter * call ale#Lint()
+  "   autocmd InsertLeave * call ale#Lint()
+  " else
+  "   echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
+  " endif
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<Tab>"
+    else
+        return "\<C-p>"
+    endif
+endfunction
+inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-n>
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -90,28 +107,9 @@ if executable('ag')
   endif
 endif
 
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
-
 " Numbers
 set number
 set numberwidth=5
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<Tab>"
-    else
-        return "\<C-p>"
-    endif
-endfunction
-inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-inoremap <S-Tab> <C-n>
 
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
@@ -123,6 +121,14 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-test mappings
+" function! EchoStrategy(cmd)
+"   echo 'It works! Command for running tests: ' . a:cmd
+"   silent exec "!(echo 'hello. I'm a process :)') > /tmp/vim_process" | :vs /tmp/vim_process
+" endfunction
+"
+" let g:test#custom_strategies = {'echo': function('EchoStrategy')}
+" let g:test#strategy = 'echo'
+
 nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
@@ -145,21 +151,73 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
-
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
-set spellfile=$HOME/.vim-spell-en.utf-8.add
-
-" Autocomplete with dictionary words when spell check is on
-set complete+=kspell
-
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
+" My own Custom Settings
+set relativenumber
+set background=dark
+colorscheme onedark
+let g:airline_theme='tender'
+let g:airline_powerline_fonts = 1
+
+" UltiSnip
+" " If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger= '<tab>'
+let g:UltiSnipsJumpBackwardTrigger= '<s-tab>'
+let g:ycm_key_list_select_completion=['<c-j>']
+let g:ycm_key_list_previous_completion=['<c-k>']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips', 'UltiSnips']
+
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Stripe whitespace on save
+autocmd BufWritePre * StripWhitespace
+set autoread
+
+" Mappings
+nnoremap <silent> <Leader>yy :.w !pbcopy<CR><CR>
+vnoremap <silent> <Leader>yy :w !pbcopy<CR><CR>
+nnoremap <silent> <Leader>nh :set nohlsearch<CR>
+nnoremap <silent> <Leader>h :set hlsearch<CR>
+
+" Emmet config
+let g:user_emmet_install_global = 0
+let g:user_emmet_settings = {
+      \   'javascript.jsx' : {
+      \     'extends' : ['ts','tsx','jsx', 'js']
+      \   }
+      \ }
+autocmd FileType html,css,javascript.jsx EmmetInstall
+
+set grepprg=ag
+
+let g:jsx_ext_required = 0
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
+autocmd FileType eruby.yaml setlocal ts=2 sts=2 sw=2 expandtab indentexpr= autoindent
+
+" Config prettier
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+
+" overwrite ctrl l in netrw
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+  noremap <buffer> <C-l> <C-w>l
+endfunction
+
+" typescript trigger for you complete me
+"
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
 endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
