@@ -15,43 +15,20 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
-Plug 'christoomey/vim-run-interactive'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'janko-m/vim-test'
-Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'mxw/vim-jsx'
-Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/greplace.vim'
-Plug 'docunext/closetag.vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'valloric/youcompleteme'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'mileszs/ack.vim'
 Plug 'jacoborus/tender'
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
-
-" Prettier
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-
-" if g:has_async
-"   Plug 'w0rp/ale'
-" endif
 
 call plug#end()

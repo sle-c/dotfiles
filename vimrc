@@ -18,12 +18,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if (has("termguicolors"))
-  set termguicolors
-endif
-
 if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+ source ~/.vimrc.bundles
 endif
 
 filetype plugin indent on
@@ -63,20 +59,17 @@ let g:is_posix = 1
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<Tab>"
-    else
-        return "\<C-p>"
-    endif
-endfunction
-inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-inoremap <S-Tab> <C-n>
-
-" Switch between the last two files
-nnoremap <Leader><Leader> <C-^>
+" set wildmode=list:longest,list:full
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<Tab>"
+"     else
+"         return "\<C-p>"
+"     endif
+" endfunction
+" inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+" inoremap <S-Tab> <C-n>
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -136,7 +129,7 @@ nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <Leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<Space>
+" nnoremap <Leader>r :RunInInteractiveShell<Space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -161,19 +154,6 @@ colorscheme onedark
 let g:airline_theme='tender'
 let g:airline_powerline_fonts = 1
 
-" UltiSnip
-" " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger= '<tab>'
-let g:UltiSnipsJumpBackwardTrigger= '<s-tab>'
-let g:ycm_key_list_select_completion=['<c-j>']
-let g:ycm_key_list_previous_completion=['<c-k>']
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips', 'UltiSnips']
-
-" YouCompleteMe config
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
 " Stripe whitespace on save
 autocmd BufWritePre * StripWhitespace
 set autoread
@@ -184,26 +164,10 @@ vnoremap <silent> <Leader>yy :w !pbcopy<CR><CR>
 nnoremap <silent> <Leader>nh :set nohlsearch<CR>
 nnoremap <silent> <Leader>h :set hlsearch<CR>
 
-" Emmet config
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-      \   'javascript.jsx' : {
-      \     'extends' : ['ts','tsx','jsx', 'js']
-      \   }
-      \ }
-autocmd FileType html,css,javascript.jsx EmmetInstall
-
 set grepprg=ag
-
-let g:jsx_ext_required = 0
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
 autocmd FileType eruby.yaml setlocal ts=2 sts=2 sw=2 expandtab indentexpr= autoindent
-
-" Config prettier
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#single_quote = 'false'
-let g:prettier#config#jsx_bracket_same_line = 'false'
 
 " overwrite ctrl l in netrw
 augroup netrw_mapping
@@ -215,9 +179,9 @@ function! NetrwMapping()
   noremap <buffer> <C-l> <C-w>l
 endfunction
 
-" typescript trigger for you complete me
-"
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
+" ack ag
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
