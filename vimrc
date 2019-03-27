@@ -179,7 +179,7 @@ function! NetrwMapping()
   noremap <buffer> <C-l> <C-w>l
 endfunction
 
-" ack ag
+" ack.vim ag
 let g:ackprg = 'ag --vimgrep --smart-case'
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
