@@ -11,15 +11,12 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set re=1          " Use old regex engine
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
-endif
-
-if (has("termguicolors"))
-  set termguicolors
 endif
 
 if filereadable(expand("~/.vimrc.bundles"))
@@ -63,17 +60,17 @@ let g:is_posix = 1
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<Tab>"
-    else
-        return "\<C-p>"
-    endif
-endfunction
-inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-inoremap <S-Tab> <C-n>
+" set wildmode=list:longest,list:full
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<Tab>"
+"     else
+"         return "\<C-p>"
+"     endif
+" endfunction
+" inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+" inoremap <S-Tab> <C-n>
 
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
@@ -96,7 +93,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s --ignore "vendor/"'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -110,9 +107,6 @@ endif
 " Numbers
 set number
 set numberwidth=5
-
-" Switch between the last two files
-nnoremap <Leader><Leader> <C-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -161,22 +155,8 @@ colorscheme onedark
 let g:airline_theme='tender'
 let g:airline_powerline_fonts = 1
 
-" UltiSnip
-" " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger= '<tab>'
-let g:UltiSnipsJumpBackwardTrigger= '<s-tab>'
-let g:ycm_key_list_select_completion=['<c-j>']
-let g:ycm_key_list_previous_completion=['<c-k>']
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips', 'UltiSnips']
-
-" YouCompleteMe config
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
 " Stripe whitespace on save
 autocmd BufWritePre * StripWhitespace
-set autoread
 
 " Mappings
 nnoremap <silent> <Leader>yy :.w !pbcopy<CR><CR>
@@ -184,26 +164,12 @@ vnoremap <silent> <Leader>yy :w !pbcopy<CR><CR>
 nnoremap <silent> <Leader>nh :set nohlsearch<CR>
 nnoremap <silent> <Leader>h :set hlsearch<CR>
 
-" Emmet config
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-      \   'javascript.jsx' : {
-      \     'extends' : ['ts','tsx','jsx', 'js']
-      \   }
-      \ }
-autocmd FileType html,css,javascript.jsx EmmetInstall
-
 set grepprg=ag
 
 let g:jsx_ext_required = 0
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
 autocmd FileType eruby.yaml setlocal ts=2 sts=2 sw=2 expandtab indentexpr= autoindent
-
-" Config prettier
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#single_quote = 'false'
-let g:prettier#config#jsx_bracket_same_line = 'false'
 
 " overwrite ctrl l in netrw
 augroup netrw_mapping
@@ -215,9 +181,11 @@ function! NetrwMapping()
   noremap <buffer> <C-l> <C-w>l
 endfunction
 
-" typescript trigger for you complete me
-"
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
+" fix the SLOOOW syntax highlighting
+augroup ft_rb
+  au!
+  au FileType ruby setlocal re=1 foldmethod=manual
+augroup END
+
+" Config vim go goimport
+let g:go_fmt_command = "goimports"
