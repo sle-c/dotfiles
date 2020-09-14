@@ -12,6 +12,10 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set re=1          " Use old regex engine
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -39,38 +43,11 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-
-  " ALE linting events
-  " if g:has_async
-  "   set updatetime=1000
-  "   let g:ale_lint_on_text_changed = 0
-  "   autocmd CursorHold * call ale#Lint()
-  "   autocmd CursorHoldI * call ale#Lint()
-  "   autocmd InsertEnter * call ale#Lint()
-  "   autocmd InsertLeave * call ale#Lint()
-  " else
-  "   echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
-  " endif
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-" set wildmode=list:longest,list:full
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<Tab>"
-"     else
-"         return "\<C-p>"
-"     endif
-" endfunction
-" inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-" inoremap <S-Tab> <C-n>
 
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
@@ -189,3 +166,17 @@ augroup END
 
 " Config vim go goimport
 let g:go_fmt_command = "goimports"
+let g:go_metalinter_command = "golangci-lint"
+let g:go_metalinter_enabled = ['vet', 'errcheck']
+let g:go_metalinter_disabled = ['golint']
+
+" ALE golangci-lint
+let g:ale_linters = { 'go': ['gofmt', 'govet', 'golangci-lint'] }
+
+" Vim-mucomplete settings
+set completeopt+=menuone
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 1
+

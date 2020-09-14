@@ -18,16 +18,13 @@ call plug#begin('~/.vim/bundle')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
 Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -36,9 +33,14 @@ Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jacoborus/tender'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'buoto/gotests-vim'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'yggdroot/indentline'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'dkprice/vim-easygrep'
 
-" if g:has_async
-"   Plug 'w0rp/ale'
-" endif
+if g:has_async
+  Plug 'w0rp/ale'
+endif
 
 call plug#end()
