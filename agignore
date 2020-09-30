@@ -5,3 +5,12 @@ tags
 /node_modules/
 /tmp
 /vendor
+/sorbet
+*.svg
+*.png
+*.jpeg
+*.jpg
+*.woff
+*.ttf
+*.eot
+*.pdf

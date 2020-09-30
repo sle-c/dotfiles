@@ -38,19 +38,32 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-
-  " ALE linting events
-  " if g:has_async
-  "   set updatetime=1000
-  "   let g:ale_lint_on_text_changed = 0
-  "   autocmd CursorHold * call ale#Lint()
-  "   autocmd CursorHoldI * call ale#Lint()
-  "   autocmd InsertEnter * call ale#Lint()
-  "   autocmd InsertLeave * call ale#Lint()
-  " else
-  "   echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
-  " endif
+  autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
+  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile vimrc.local set filetype=vim
 augroup END
+
+" ALE linting events
+augroup ale
+  autocmd!
+
+  if g:has_async
+    autocmd VimEnter *
+      \ set updatetime=1000 |
+      \ let g:ale_lint_on_text_changed = 0
+    autocmd CursorHold * call ale#Queue(0)
+    autocmd CursorHoldI * call ale#Queue(0)
+    autocmd InsertEnter * call ale#Queue(0)
+    autocmd InsertLeave * call ale#Queue(0)
+  else
+    echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
+  endif
+augroup END
+
+" Move between linting errors
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
@@ -88,11 +101,14 @@ if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  " " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+  "
+  " " ag is fast enough that CtrlP doesn't need to cache
+  " let g:ctrlp_use_caching = 0
+  "
+  " " only update search pane when typing has stopped
+  " let g:ctrlp_lazy_update = 1
 
   if !exists(":Ag")
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
@@ -145,7 +161,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Always use vertical diffs
-set diffopt+=vertical
+" set diffopt+=vertical
 
 " My own Custom Settings
 set relativenumber
@@ -159,10 +175,21 @@ autocmd BufWritePre * StripWhitespace
 set autoread
 
 " Mappings
-nnoremap <silent> <Leader>yy :.w !pbcopy<CR><CR>
-vnoremap <silent> <Leader>yy :w !pbcopy<CR><CR>
+" Copy to clipboard
+" setting clipboard to unnamed will enable global copy and paste in vim
+" which means if I copy something from outside,
+" it'll override vim's copy register too
+" set clipboard=unnamed
+" bind keys to be more explicit
+
+nnoremap <silent> <Leader>yy "+yy
+noremap <silent> <Leader>y "*y
+
+" Utils mappings
 nnoremap <silent> <Leader>nh :set nohlsearch<CR>
 nnoremap <silent> <Leader>h :set hlsearch<CR>
+nnoremap <silent> <Leader>p :set paste<CR>
+nnoremap <silent> <Leader>np :set nopaste<CR>
 
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
@@ -185,3 +212,20 @@ cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
+
+"Tabularize | by tpop
+"source https://gist.github.com/tpope/287147
+"
+" shortcuts for tabularize
+noremap <silent><Leader>e<bar> :Tabularize /<bar><CR>
+noremap <silent><Leader>e= :Tabularize /=<CR>
+noremap <silent><Leader>e, :Tabularize /,<CR>
+noremap <silent><Leader>e: :Tabularize /:<CR>
+noremap <silent><Leader>es: :Tabularize /:\zs<CR>
+
+"Toggle nerd tree
+noremap <silent><Leader>b :NERDTreeToggle<CR>
+
+" Fzf configs
+nnoremap <C-p> :Files<Cr>
+let g:fzf_preview_window = ''

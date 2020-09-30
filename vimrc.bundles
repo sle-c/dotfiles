@@ -15,12 +15,11 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-airline/vim-airline'
@@ -28,7 +27,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/greplace.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'mileszs/ack.vim'
 Plug 'jacoborus/tender'
+Plug 'mileszs/ack.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mattn/emmet-vim'
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-eunuch'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'godlygeek/tabular'
 
 call plug#end()
