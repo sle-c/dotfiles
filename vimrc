@@ -56,6 +56,7 @@ augroup ale
     autocmd CursorHoldI * call ale#Queue(0)
     autocmd InsertEnter * call ale#Queue(0)
     autocmd InsertLeave * call ale#Queue(0)
+    let g:ale_echo_msg_format = '%linter% says %s'
   else
     echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
   endif
@@ -224,8 +225,24 @@ noremap <silent><Leader>e: :Tabularize /:<CR>
 noremap <silent><Leader>es: :Tabularize /:\zs<CR>
 
 "Toggle nerd tree
-noremap <silent><Leader>b :NERDTreeToggle<CR>
+noremap <silent><Leader>b :call NERDTreeToggleInCurDir()<CR>
+function! NERDTreeToggleInCurDir()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    exe ":NERDTreeFind"
+  endif
+endfunction
 
 " Fzf configs
 nnoremap <C-p> :Files<Cr>
 let g:fzf_preview_window = ''
+
+" utils
+function! CleanAllBuffers()
+  exe ":%bd|e#"
+endfunction
+
+" initialize skeleton ruby files
+autocmd BufNewFile *.rb 0r ~/.vim/skeletons/skeleton.rb
