@@ -89,6 +89,34 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable lsp
   use "williamboman/nvim-lsp-installer" -- simple to use lanuage server installer
 
+  -- telescope
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
+
+  -- treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
+
+  use "windwp/nvim-autopairs" -- autopairs, integrate with both cmp and treesitter
+  use "numToStr/Comment.nvim" -- easily comment things out
+  use "JoosepAlviste/nvim-ts-context-commentstring" -- comment in tsx and css
+
+  use "lewis6991/gitsigns.nvim"
+
+  -- nvimtree file browser
+  use "kyazdani42/nvim-web-devicons"
+  use "kyazdani42/nvim-tree.lua"
+
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatter and linters
+
+  use "nvim-lualine/lualine.nvim" -- status line
+  use "lukas-reineke/indent-blankline.nvim" -- indent line
+  use "lewis6991/impatient.nvim" -- improve load time
+  use "folke/which-key.nvim"
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
