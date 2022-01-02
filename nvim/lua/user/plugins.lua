@@ -118,6 +118,10 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim" -- improve load time
   use "folke/which-key.nvim" -- show keys configuration
 
+  -- svelte related
+  use "leafOfTree/vim-svelte-plugin"
+  use "digitaltoad/vim-pug"
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

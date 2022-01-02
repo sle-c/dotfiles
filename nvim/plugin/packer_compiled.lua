@@ -209,6 +209,16 @@ _G.packer_plugins = {
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-pug"] = {
+    loaded = true,
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-pug",
+    url = "https://github.com/digitaltoad/vim-pug"
+  },
+  ["vim-svelte-plugin"] = {
+    loaded = true,
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin",
+    url = "https://github.com/leafOfTree/vim-svelte-plugin"
+  },
   ["which-key.nvim"] = {
     loaded = true,
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/which-key.nvim",
