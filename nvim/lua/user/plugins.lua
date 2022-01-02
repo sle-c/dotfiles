@@ -116,7 +116,7 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim" -- status line
   use "lukas-reineke/indent-blankline.nvim" -- indent line
   use "lewis6991/impatient.nvim" -- improve load time
-  use "folke/which-key.nvim"
+  use "folke/which-key.nvim" -- show keys configuration
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
