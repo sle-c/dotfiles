@@ -122,6 +122,9 @@ return packer.startup(function(use)
   use "leafOfTree/vim-svelte-plugin"
   use "digitaltoad/vim-pug"
 
+  -- utils
+  use "ntpeters/vim-better-whitespace"
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

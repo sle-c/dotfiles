@@ -209,6 +209,11 @@ _G.packer_plugins = {
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-better-whitespace"] = {
+    loaded = true,
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
+    url = "https://github.com/ntpeters/vim-better-whitespace"
+  },
   ["vim-pug"] = {
     loaded = true,
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-pug",
