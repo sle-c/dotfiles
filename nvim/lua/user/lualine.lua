@@ -154,7 +154,7 @@ local spaces = {
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
+		theme = "codedark",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
@@ -171,9 +171,7 @@ lualine.setup({
 	},
 	inactive_sections = {
 		lualine_a = {},
-    lualine_c = {
-      filename,
-    },
+    lualine_c = { filename },
 		lualine_x = { "branch" },
 		lualine_y = {},
 		lualine_z = {},
