@@ -50,7 +50,6 @@ local diagnostics = {
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
-	colored = false,
 	update_in_insert = false,
 	always_visible = true,
   cond = dynamic_hide_in_width(60),
@@ -58,7 +57,6 @@ local diagnostics = {
 
 local diff = {
 	"diff",
-	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
   cond = dynamic_hide_in_width(60),
 }
