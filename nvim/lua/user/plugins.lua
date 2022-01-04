@@ -114,6 +114,7 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatter and linters
 
   use "nvim-lualine/lualine.nvim" -- status line
+
   use "lukas-reineke/indent-blankline.nvim" -- indent line
   use "lewis6991/impatient.nvim" -- improve load time
   use "folke/which-key.nvim" -- show keys configuration
