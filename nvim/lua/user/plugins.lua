@@ -111,11 +111,11 @@ return packer.startup(function(use)
 
   -- use "jose-elias-alvarez/null-ls.nvim" -- for formatter and linters
 
-  use "nvim-lualine/lualine.nvim" -- status line
+  use "nvim-lualine/lualine.nvim"           -- status line
 
   use "lukas-reineke/indent-blankline.nvim" -- indent line
-  use "lewis6991/impatient.nvim" -- improve load time
-  use "folke/which-key.nvim" -- show keys configuration
+  use "lewis6991/impatient.nvim"            -- improve load time
+  use "folke/which-key.nvim"                -- show keys configuration
 
   -- svelte related
   use "leafOfTree/vim-svelte-plugin"
@@ -124,6 +124,8 @@ return packer.startup(function(use)
   -- utils
   use "ntpeters/vim-better-whitespace"
   use "tpope/vim-surround"
+  use "godlygeek/tabular"                   -- align columns of text
+  use "AndrewRadev/splitjoin.vim"
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
