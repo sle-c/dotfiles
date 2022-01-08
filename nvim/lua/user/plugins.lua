@@ -46,8 +46,6 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
   -- colorschemes
-  use "lunarvim/colorschemes"
-  use "lunarvim/darkplus.nvim"
   use "folke/tokyonight.nvim"
 
   -- cmp plugins
@@ -111,7 +109,7 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
 
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatter and linters
+  -- use "jose-elias-alvarez/null-ls.nvim" -- for formatter and linters
 
   use "nvim-lualine/lualine.nvim" -- status line
 
@@ -125,6 +123,7 @@ return packer.startup(function(use)
 
   -- utils
   use "ntpeters/vim-better-whitespace"
+  use "tpope/vim-surround"
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

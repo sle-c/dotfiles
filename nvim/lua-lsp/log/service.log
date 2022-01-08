@@ -1,0 +1,34 @@
+[20:39:45.538][info] [#0:/home/dandan/dev/dotfiles/nvim/lua-lsp/main.lua:49]: Lua Lsp startup, root: 	/home/dandan/dev/dotfiles/nvim/lua-lsp
+[20:39:45.538][debug][#0:/home/dandan/dev/dotfiles/nvim/lua-lsp/main.lua:50]: ROOT:	/home/dandan/dev/dotfiles/nvim/lua-lsp
+[20:39:45.538][debug][#0:/home/dandan/dev/dotfiles/nvim/lua-lsp/main.lua:51]: LOGPATH:	/home/dandan/dev/dotfiles/nvim/lua-lsp/log
+[20:39:45.538][debug][#0:/home/dandan/dev/dotfiles/nvim/lua-lsp/main.lua:52]: METAPATH:	/home/dandan/dev/dotfiles/nvim/lua-lsp/meta
+[20:39:45.538][debug][#0:/home/dandan/dev/dotfiles/nvim/lua-lsp/main.lua:53]: VERSION:	2.5.6
+[20:39:45.565][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	315E810188F0865D
+[20:39:45.569][info] [#0:script/pub/pub.lua:48]: Create brave:	1
+[20:39:45.569][info] [#0:script/pub/pub.lua:48]: Create brave:	2
+[20:39:45.569][info] [#0:script/pub/pub.lua:48]: Create brave:	3
+[20:39:45.569][info] [#0:script/pub/pub.lua:48]: Create brave:	4
+[20:39:45.569][debug][#0:script/service/service.lua:138]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 1.331 MB
+        # 00 : 1.331 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    --------------- Proto ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[20:39:47.402][warn] [#0:script/pub/report.lua:24]: Load proto error:	Proto header error: q
+

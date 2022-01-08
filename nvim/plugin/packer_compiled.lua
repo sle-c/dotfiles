@@ -104,16 +104,6 @@ _G.packer_plugins = {
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  colorschemes = {
-    loaded = true,
-    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/colorschemes",
-    url = "https://github.com/lunarvim/colorschemes"
-  },
-  ["darkplus.nvim"] = {
-    loaded = true,
-    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
-    url = "https://github.com/lunarvim/darkplus.nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -138,11 +128,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -218,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-pug",
     url = "https://github.com/digitaltoad/vim-pug"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-svelte-plugin"] = {
     loaded = true,
