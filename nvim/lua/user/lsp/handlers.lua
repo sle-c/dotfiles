@@ -90,13 +90,6 @@ M.on_attach = function(client, bufnr)
 
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
-
-  local illuminate_ok, illuminate = pcall(require, "illuminate")
-  if not illuminate_ok then
-    vim.notify("Illuminate not installed")
-  else
-    illuminate.on_attach(client)
-  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

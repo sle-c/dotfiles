@@ -124,8 +124,26 @@ return packer.startup(function(use)
   -- utils
   use "ntpeters/vim-better-whitespace"
   use "tpope/vim-surround"
+  use "tpope/vim-repeat"
   use "godlygeek/tabular"                   -- align columns of text
   use "AndrewRadev/splitjoin.vim"
+
+  -- navigation plugins
+  use {
+    "phaazon/hop.nvim",
+    branch = "v1.2",
+    cmd = {
+      "HopWord",
+      "HopLine",
+      "HopLineStart",
+      "HopChar1",
+      "HopChar2",
+      "HopePattern",
+    },
+    config = function()
+      require("user.plugin_configs.hop").setup()
+    end,
+  }
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
