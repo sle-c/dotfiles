@@ -125,6 +125,7 @@ return packer.startup(function(use)
   use "ntpeters/vim-better-whitespace"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
+  use "tpope/vim-abolish"
   use "godlygeek/tabular"                   -- align columns of text
   use "AndrewRadev/splitjoin.vim"
 
