@@ -11,6 +11,12 @@ telescope.setup {
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
+    pickers = {
+      find_files = {
+        theme = "ivy",
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+      }
+    },
 
     mappings = {
       i = {
