@@ -87,11 +87,13 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable lsp
   use "williamboman/nvim-lsp-installer" -- simple to use lanuage server installer
 
-  -- telescope
+  -- fzf
   use {
-    "nvim-telescope/telescope.nvim",
-    requires = { {"nvim-lua/plenary.nvim"} }
+    "junegunn/fzf",
+    run = ":call fzf#install()",
   }
+  use "junegunn/fzf.vim"
+  use "jesseleite/vim-agriculture"
 
   -- treesitter
   use {

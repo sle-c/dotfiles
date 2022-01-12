@@ -92,6 +92,11 @@ source $ZSH/oh-my-zsh.sh
 # Flutter path
 export PATH=$PATH:/Users/sile/dev/flutter/bin
 
+# ENV vars
+export FZF_DEFAULT_COMMAND='fd --type f --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--ansi"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
