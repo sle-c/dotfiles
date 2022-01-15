@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/sile/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/sile/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/sile/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/sile/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/sile/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/dandan/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/dandan/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/dandan/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/dandan/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/dandan/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,57 +71,57 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
   LuaSnip = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   fzf = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/fzf",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/fzf",
     url = "https://github.com/junegunn/fzf"
   },
   ["fzf.vim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/fzf.vim",
     url = "https://github.com/junegunn/fzf.vim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["hop.nvim"] = {
@@ -130,132 +130,132 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/opt/hop.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/opt/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
   },
   ["impatient.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
     url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-ts-context-commentstring"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
     url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["splitjoin.vim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
     url = "https://github.com/AndrewRadev/splitjoin.vim"
   },
   tabular = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/tabular",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/tabular",
     url = "https://github.com/godlygeek/tabular"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-abolish"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-abolish",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-abolish",
     url = "https://github.com/tpope/vim-abolish"
   },
   ["vim-agriculture"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-agriculture",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-agriculture",
     url = "https://github.com/jesseleite/vim-agriculture"
   },
   ["vim-better-whitespace"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
     url = "https://github.com/ntpeters/vim-better-whitespace"
   },
   ["vim-pug"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-pug",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-pug",
     url = "https://github.com/digitaltoad/vim-pug"
   },
   ["vim-repeat"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-surround",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
   ["vim-svelte-plugin"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin",
     url = "https://github.com/leafOfTree/vim-svelte-plugin"
   },
   ["which-key.nvim"] = {
     loaded = true,
-    path = "/Users/sile/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    path = "/home/dandan/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
   }
 }
@@ -264,12 +264,12 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopLine lua require("packer.load")({'hop.nvim'}, { cmd = "HopLine", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopLineStart lua require("packer.load")({'hop.nvim'}, { cmd = "HopLineStart", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop.nvim'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar2 lua require("packer.load")({'hop.nvim'}, { cmd = "HopChar2", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopePattern lua require("packer.load")({'hop.nvim'}, { cmd = "HopePattern", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopWord lua require("packer.load")({'hop.nvim'}, { cmd = "HopWord", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopLine lua require("packer.load")({'hop.nvim'}, { cmd = "HopLine", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 if should_profile then save_profiles() end
