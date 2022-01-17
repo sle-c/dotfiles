@@ -64,3 +64,6 @@ keymap("n", "<Leader>fr", ":RgRaw", { noremap = true, silent = false })
 
 -- nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+-- breakline
+vim.cmd [[ nnoremap gob  :s/\((\zs\\|,\ *\zs\\|)\)/\r&/g<CR><Bar>:'[,']normal ==<CR> ]]

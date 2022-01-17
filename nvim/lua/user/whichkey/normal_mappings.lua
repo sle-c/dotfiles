@@ -113,6 +113,15 @@ local keys = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+  y = {
+    name = "Yank",
+    p = { ":let @+ = expand('%')<cr>", "Yank file Path"},
+    l = { ":let @+ = expand('%').':'.line('.')<cr>", "Yank file Path with line number"},
+    b = { ":let @+ = expand('%:p')<cr>", "Yank file aBsolute path"},
+    n = { ":let @+ = expand('%:t')<cr>", "Yank file name"},
+    d = { ":let @+ = expand('%:p:h')<cr>", "Yank directory path"},
+  }
 }
 
 M.keys = keys
