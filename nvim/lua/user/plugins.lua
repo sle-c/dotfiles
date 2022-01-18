@@ -130,6 +130,16 @@ return packer.startup(function(use)
   use "tpope/vim-abolish"
   use "godlygeek/tabular"                   -- align columns of text
   use "AndrewRadev/splitjoin.vim"
+  -- Git integrations
+  use "tpope/vim-fugitive"
+  use {
+    "tpope/vim-rhubarb",
+    requires = {
+      { "tpope/vim-fugitive", opt = false },
+      { "tyru/open-browser.vim", opt = false }
+    },
+  }
+  use "tyru/open-browser.vim"
 
   -- navigation plugins
   use {
