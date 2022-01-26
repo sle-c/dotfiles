@@ -107,6 +107,7 @@ export FZF_DEFAULT_OPTS="--ansi"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 alias open_chrome_without_cert="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors &> /dev/null &"
+alias dev_ci="dev style --include-branch-commits && bin/srb typecheck"
 
 # Tmuxp completion config
 eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"

@@ -7,7 +7,6 @@ end
 configs.setup {
   ensure_installed = {
     "typescript",
-    "ruby",
     "go",
     "javascript",
     "graphql",
@@ -28,7 +27,7 @@ configs.setup {
     disable = { "html" },
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { "yaml", "ruby" } },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,

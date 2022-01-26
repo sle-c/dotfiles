@@ -130,6 +130,7 @@ return packer.startup(function(use)
   use "tpope/vim-abolish"
   use "godlygeek/tabular"                   -- align columns of text
   use "AndrewRadev/splitjoin.vim"
+
   -- Git integrations
   use "tpope/vim-fugitive"
   use {
@@ -157,6 +158,11 @@ return packer.startup(function(use)
       require("user.plugin_configs.hop").setup()
     end,
   }
+
+  -- ruby
+  use "vim-ruby/vim-ruby"
+  use "tpope/vim-rails"
+  use "tpope/vim-endwise"
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
