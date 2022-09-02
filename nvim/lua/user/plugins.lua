@@ -164,6 +164,16 @@ return packer.startup(function(use)
   use "tpope/vim-rails"
   use "tpope/vim-endwise"
 
+  use {
+    "nvim-treesitter/playground",
+    cmd = {
+      "TSPlaygroundToggle",
+    },
+  }
+
+  use {
+    "omnisyle/nvim-hidesig"
+  }
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

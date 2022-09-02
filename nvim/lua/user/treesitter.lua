@@ -25,8 +25,9 @@ configs.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { "html" },
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
+  hidesig = { enable = true, opacity = 0.6 },
   indent = { enable = true, disable = { "yaml", "ruby" } },
   context_commentstring = {
     enable = true,
