@@ -1,122 +1,72 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ── PATH ──────────────────────────────────────────────────────────────────────
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/sile/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ── oh-my-zsh ─────────────────────────────────────────────────────────────────
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# ── Editor ────────────────────────────────────────────────────────────────────
+export EDITOR='nvim'
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# ── Homebrew ──────────────────────────────────────────────────────────────────
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# ── Ruby (chruby) ─────────────────────────────────────────────────────────────
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# ── Shopify cloudplatform ─────────────────────────────────────────────────────
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}$HOME/.kube/config:$HOME/.kube/config.shopify.cloudplatform
+for file in $HOME/src/github.com/Shopify/cloudplatform/workflow-utils/*.bash; do source ${file}; done
+kubectl-short-aliases
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# ── Node (NVM) ────────────────────────────────────────────────────────────────
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# Flutter path
-export PATH=$PATH:/Users/sile/dev/flutter/bin
+# ── Node (pnpm) ───────────────────────────────────────────────────────────────
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
-# ENV vars
-export FZF_DEFAULT_COMMAND='fd --type f --color=always'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--ansi"
+# ── Node (bun) ────────────────────────────────────────────────────────────────
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-alias open_chrome_without_cert="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors &> /dev/null &"
-alias dev_ci="dev style --include-branch-commits && bin/srb typecheck"
+# ── Go ────────────────────────────────────────────────────────────────────────
+export GOPATH=~/dev
 
-# Tmuxp completion config
-eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"
+# ── Android NDK ───────────────────────────────────────────────────────────────
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/27.0.12077973"
+export CARGO_TARGET_X86_64_LINUX_ANDROID_RUSTFLAGS="-L ${ANDROID_HOME}/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux"
+export CARGO_TARGET_I686_LINUX_ANDROID_RUSTFLAGS="-L ${ANDROID_HOME}/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux"
 
+# ── Shopify dev ───────────────────────────────────────────────────────────────
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/sile/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/sile/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# ── tec agent ────────────────────────────────────────────────────────────────
+[[ -x $HOME/.local/state/tec/profiles/base/current/global/init ]] && eval "$($HOME/.local/state/tec/profiles/base/current/global/init zsh)"
 
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+# ── Aliases & Functions ───────────────────────────────────────────────────────
+[ -f "$HOME/.zsh_functions" ] && source "$HOME/.zsh_functions"
+[ -f "$HOME/.zsh_aliases" ]   && source "$HOME/.zsh_aliases"
 
-[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
+# Added by tec agent
+[[ -x /Users/sile/.local/state/tec/profiles/base/current/global/init ]] && eval "$(/Users/sile/.local/state/tec/profiles/base/current/global/init zsh)"
+
+# ── Homebrew PATH fix ─────────────────────────────────────────────────────────
+# Shadowenv replaces PATH on every prompt, stripping Homebrew.
+# This precmd hook re-adds /opt/homebrew/bin after shadowenv runs.
+__ensure_homebrew_in_path() {
+  if [[ -d /opt/homebrew/bin ]] && [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+  fi
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd __ensure_homebrew_in_path
