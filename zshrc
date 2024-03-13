@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/sile/.oh-my-zsh"
@@ -23,14 +23,13 @@ ZSH_THEME="robbyrussell"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -45,6 +44,9 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -85,17 +87,10 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Flutter path
-export PATH=$PATH:/Users/sile/dev/flutter/bin
-
-# ENV vars
-export FZF_DEFAULT_COMMAND='fd --type f --color=always'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--ansi"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -105,18 +100,46 @@ export FZF_DEFAULT_OPTS="--ansi"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-alias open_chrome_without_cert="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors &> /dev/null &"
-alias dev_ci="dev style --include-branch-commits && bin/srb typecheck"
 
-# Tmuxp completion config
-eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"
+# Function to check and delete local branches without an associated remote branch
+git_branch_cleanup() {
+    # Get the list of local branches
+    local_branches=($(git for-each-ref --format='%(refname:short)' refs/heads/))
+
+    for branch in "${local_branches[@]}"; do
+        # Check if the branch exists on the remote repository
+        remote_exists=$(git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; echo $?)
+
+        if [ "$remote_exists" -ne 0 ]; then
+            # Delete the local branch
+            if git branch -D "$branch" >/dev/null 2>&1; then
+                echo "Deleted local branch '$branch'"
+            else
+                error_message=$(git branch -D "$branch" 2>&1)
+                echo "Failed to delete local branch '$branch': $error_message"
+            fi
+        fi
+    done
+}
+# Alias the function to a command
+alias git-cleanup='git_branch_cleanup'
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
+
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/sile/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/sile/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# cloudplatform: add Shopify clusters to your local kubernetes config
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/sile/.kube/config:/Users/sile/.kube/config.shopify.cloudplatform
+for file in /Users/sile/src/github.com/Shopify/cloudplatform/workflow-utils/*.bash; do source ${file}; done
+kubectl-short-aliases
 
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+# pnpm
+export PNPM_HOME="/Users/sile/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
-[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
+export GOPATH=~/dev
