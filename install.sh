@@ -2,10 +2,10 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # link zshrc
-ln -s ./zshrc ~/.zshrc
+ln ./zshrc ~/.zshrc
 
 # link hushlogin
-ln -s ./hushlogin ~/.hushlogin
+ln ./hushlogin ~/.hushlogin
 
 source ~/.zshrc
 
@@ -23,7 +23,7 @@ brew install --cask font-fira-code-nerd-font
 brew install --cask ghostty
 
 # link ghostty config
-ln -s ./ghostty.config $XDG_CONFIG_HOME/ghostty/config
+ln ./ghostty.config $XDG_CONFIG_HOME/ghostty/config
 
 # install neovim
 brew install neovim
@@ -39,10 +39,10 @@ git clone https://github.com/LazyVim/starter $XDG_CONFIG_HOME/nvim
 rm -rf $XDG_CONFIG_HOME/nvim/.git
 
 # link tmux configuration
-ln -s ./tmux.conf ~/.tmux.conf
+ln ./tmux.conf ~/.tmux.conf
 
 # link git configuration
-ln -s ./gitconfig ~/.gitconfig
+ln ./gitconfig ~/.gitconfig
 
 # install xcode command line tools
 xcode-select --install
