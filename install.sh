@@ -1,11 +1,13 @@
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# copy zshrc
-cp ./zshrc ~/.zshrc
+# link zshrc
+ln -s ./zshrc ~/.zshrc
 
-# copy hushlogin
-cp ./hushlogin ~/.hushlogin
+# link hushlogin
+ln -s ./hushlogin ~/.hushlogin
+
+source ~/.zshrc
 
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -20,14 +22,11 @@ brew install --cask font-fira-code-nerd-font
 # install ghostty
 brew install --cask ghostty
 
-# copy ghostty config
-cp ./ghostty.config $XDG_CONFIG_HOME/ghostty/config
+# link ghostty config
+ln -s ./ghostty.config $XDG_CONFIG_HOME/ghostty/config
 
 # install neovim
 brew install neovim
-
-# copy neovim configuration
-cp -r ./nvim ~/.config/nvim
 
 # install nvm
 brew install nvm
@@ -35,11 +34,15 @@ brew install nvm
 # install tmux
 brew install tmux
 
-# copy tmux configuration
-cp ./tmux.conf ~/.tmux.conf
+# install lazyvim
+git clone https://github.com/LazyVim/starter $XDG_CONFIG_HOME/nvim
+rm -rf $XDG_CONFIG_HOME/nvim/.git
 
-# copy git configuration
-cp ./gitconfig ~/.gitconfig
+# link tmux configuration
+ln -s ./tmux.conf ~/.tmux.conf
+
+# link git configuration
+ln -s ./gitconfig ~/.gitconfig
 
 # install xcode command line tools
 xcode-select --install
