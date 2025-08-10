@@ -1,0 +1,37 @@
+[user]
+	email = omnisyle@gmail.com
+	name = Si Le
+
+[init]
+	defaultBranch = main
+
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[fetch]
+	prune = true
+	pruneTags = true
+
+[push]
+  autoSetupRemote = true
+
+[pull]
+  rebase = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[rerere]
+  enabled = true
+
+[branch]
+  sort = -committerdate
+
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
+
+[diff]
+  algorithm = histogram
