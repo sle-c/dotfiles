@@ -50,23 +50,11 @@ export CARGO_TARGET_I686_LINUX_ANDROID_RUSTFLAGS="-L ${ANDROID_HOME}/ndk/27.0.12
 # ── Shopify dev ───────────────────────────────────────────────────────────────
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
-# ── tec agent ────────────────────────────────────────────────────────────────
-[[ -x $HOME/.local/state/tec/profiles/base/current/global/init ]] && eval "$($HOME/.local/state/tec/profiles/base/current/global/init zsh)"
 
 # ── Aliases & Functions ───────────────────────────────────────────────────────
 [ -f "$HOME/.zsh_functions" ] && source "$HOME/.zsh_functions"
 [ -f "$HOME/.zsh_aliases" ]   && source "$HOME/.zsh_aliases"
 
+
 # Added by tec agent
 [[ -x /Users/sile/.local/state/tec/profiles/base/current/global/init ]] && eval "$(/Users/sile/.local/state/tec/profiles/base/current/global/init zsh)"
-
-# ── Homebrew PATH fix ─────────────────────────────────────────────────────────
-# Shadowenv replaces PATH on every prompt, stripping Homebrew.
-# This precmd hook re-adds /opt/homebrew/bin after shadowenv runs.
-__ensure_homebrew_in_path() {
-  if [[ -d /opt/homebrew/bin ]] && [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-  fi
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd __ensure_homebrew_in_path
